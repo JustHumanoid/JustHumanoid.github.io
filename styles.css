@@ -230,4 +230,14 @@ footer {
     }
     to {
         opacity: 1;
-        transform: translate
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
