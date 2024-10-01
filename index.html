@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #003300; /* Dark green */
+            background-color: #003300; /* Donkergroen */
             color: white;
         }
 
@@ -22,12 +22,12 @@
         }
 
         h1 {
-            color: #ffcc00; /* Yellow */
+            color: #ffcc00; /* Geel */
             text-align: center;
             margin-bottom: 30px;
         }
 
-        /* Sidebar and Document Container */
+        /* Boomstructuur */
         .document-viewer {
             display: flex;
             flex-direction: row;
@@ -36,8 +36,7 @@
             margin-bottom: 30px;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
+        .tree-structure {
             width: 30%;
             background-color: #fff;
             color: #003300;
@@ -47,39 +46,42 @@
             overflow-y: auto;
         }
 
-        .sidebar h2 {
-            text-align: center;
-            font-size: 22px;
+        .tree ul {
+            list-style-type: none;
+            padding-left: 20px;
         }
 
-        .file-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .tree li {
+            margin: 10px 0;
+            cursor: pointer;
         }
 
-        .file-list li {
-            margin: 15px 0;
-            text-align: center;
+        .tree .folder {
+            font-weight: bold;
         }
 
-        .file-list a {
-            text-decoration: none;
+        .tree .document {
+            padding-left: 20px;
+            display: none; /* Verborgen tot de map wordt geopend */
+        }
+
+        .tree .document a {
             color: #003300;
+            text-decoration: none;
             font-size: 18px;
             display: block;
-            background-color: #ffcc00; /* Yellow */
-            padding: 10px 15px;
+            background-color: #ffcc00; /* Geel */
+            padding: 5px 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .file-list a:hover {
+        .tree .document a:hover {
             background-color: #003300;
             color: #fff;
         }
 
-        /* Document Viewer Styles */
+        /* Viewer voor het bekijken van documenten */
         .viewer {
             width: 70%;
             margin-left: 20px;
@@ -87,30 +89,24 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             background-color: #fff;
             padding: 20px;
-            overflow: hidden;
         }
 
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-            transition: opacity 0.3s ease;
         }
 
-        /* Responsive Design */
+        /* Responsief ontwerp */
         @media (max-width: 768px) {
             .document-viewer {
                 flex-direction: column;
                 height: auto;
             }
 
-            .sidebar, .viewer {
+            .tree-structure, .viewer {
                 width: 100%;
                 margin: 10px 0;
-            }
-
-            .file-list a {
-                font-size: 16px;
             }
 
             iframe {
@@ -126,26 +122,6 @@
             iframe {
                 height: 400px;
             }
-
-            .file-list a {
-                font-size: 14px;
-            }
-        }
-
-        /* Button to Open Google Drive */
-        .drive-btn {
-            background-color: #009900;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .drive-btn:hover {
-            background-color: #006600;
         }
     </style>
 </head>
@@ -154,26 +130,49 @@
 <div class="container">
     <h1>MENTOR Document Viewer</h1>
 
-    <!-- Main Document Viewer -->
+    <!-- Document viewer met boomstructuur -->
     <div class="document-viewer">
-        <!-- Sidebar with Google Drive Links -->
-        <div class="sidebar">
-            <h2>Document List</h2>
-            <ul class="file-list">
-                <li><a href="https://drive.google.com/file/d/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb/view?usp=sharing" target="viewer">Mentorbundel 2022-2023</a></li>
-                <!-- If there are more documents, add them here -->
+        <div class="tree-structure">
+            <h2>Document Tree</h2>
+            <ul class="tree">
+                <li class="folder">📂 Semester 1
+                    <ul class="document">
+                        <li><a href="https://drive.google.com/file/d/YOUR_DOCUMENT_ID_1/preview" target="viewer">Document 1</a></li>
+                        <li><a href="https://drive.google.com/file/d/YOUR_DOCUMENT_ID_2/preview" target="viewer">Document 2</a></li>
+                    </ul>
+                </li>
+                <li class="folder">📂 Semester 2
+                    <ul class="document">
+                        <li><a href="https://drive.google.com/file/d/YOUR_DOCUMENT_ID_3/preview" target="viewer">Document 3</a></li>
+                        <li><a href="https://drive.google.com/file/d/YOUR_DOCUMENT_ID_4/preview" target="viewer">Document 4</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
-        <!-- Iframe for displaying documents -->
+        <!-- Iframe voor het bekijken van documenten -->
         <div class="viewer">
-            <iframe name="viewer" src="https://drive.google.com/file/d/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb/view?usp=sharing"></iframe>
+            <iframe name="viewer" src=""></iframe>
         </div>
     </div>
 
-    <!-- Button to open full Google Drive folder -->
+    <!-- Knop om de volledige Google Drive map te openen -->
     <button class="drive-btn" onclick="window.open('https://drive.google.com/drive/folders/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb', '_blank')">Open Full Google Drive Folder</button>
 </div>
+
+<script>
+    // JavaScript om de documenten in- en uit te klappen
+    document.querySelectorAll('.folder').forEach(folder => {
+        folder.addEventListener('click', function() {
+            const documentList = this.querySelector('ul.document');
+            if (documentList.style.display === 'none' || documentList.style.display === '') {
+                documentList.style.display = 'block';
+            } else {
+                documentList.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
