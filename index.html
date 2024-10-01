@@ -5,102 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MENTOR Document Viewer</title>
     <style>
-        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #003300; /* Dark green background */
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #003300; /* Dark green */
             color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #ffcc00; /* Yellow */
-            padding: 10px;
-            margin: 0;
         }
 
         .container {
-            display: flex;
-            flex-direction: row;
-            height: 100vh;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Sidebar for Desktop */
+        h1 {
+            color: #ffcc00; /* Yellow */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar and Document Container */
+        .document-viewer {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar Styles */
         .sidebar {
             width: 30%;
-            padding: 20px;
             background-color: #fff;
             color: #003300;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             overflow-y: auto;
         }
 
         .sidebar h2 {
+            text-align: center;
             font-size: 22px;
-            margin-bottom: 20px;
         }
 
         .file-list {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .file-list li {
-            margin: 10px 0;
+            margin: 15px 0;
+            text-align: center;
         }
 
         .file-list a {
-            color: #003300;
             text-decoration: none;
+            color: #003300;
             font-size: 18px;
-            font-weight: bold;
+            display: block;
+            background-color: #ffcc00; /* Yellow */
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .file-list a:hover {
-            color: #009900; /* Bright green on hover */
+            background-color: #003300;
+            color: #fff;
         }
 
-        /* Document viewer for Desktop */
+        /* Document Viewer Styles */
         .viewer {
             width: 70%;
+            margin-left: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             background-color: #fff;
             padding: 20px;
-            border-radius: 10px;
-            margin-left: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
         iframe {
             width: 100%;
-            height: 600px;
+            height: 100%;
             border: none;
+            transition: opacity 0.3s ease;
         }
 
-        /* Responsive Design for Mobile */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
+            .document-viewer {
                 flex-direction: column;
                 height: auto;
             }
 
-            .sidebar {
+            .sidebar, .viewer {
                 width: 100%;
-                margin-bottom: 20px;
+                margin: 10px 0;
             }
 
-            .viewer {
-                width: 100%;
-                margin-left: 0;
+            .file-list a {
+                font-size: 16px;
             }
 
             iframe {
-                height: 400px;
+                height: 500px;
             }
         }
 
@@ -109,88 +123,59 @@
                 font-size: 24px;
             }
 
-            /* Mobile specific styles */
-            .sidebar {
-                display: none; /* Initially hidden on small screens */
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 10;
-                width: 100%;
-                height: 100vh;
-                background-color: #fff;
-                color: #003300;
-                padding: 20px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-                overflow-y: auto;
-            }
-
-            .viewer {
-                width: 100%;
-                padding: 10px;
-            }
-
             iframe {
-                height: 300px;
+                height: 400px;
             }
 
-            .mobile-toggle {
-                display: block;
-                background-color: #ffcc00;
-                color: #003300;
-                padding: 10px;
-                text-align: center;
-                font-size: 20px;
-                cursor: pointer;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 9;
+            .file-list a {
+                font-size: 14px;
             }
+        }
 
-            .mobile-toggle:hover {
-                background-color: #003300;
-                color: #fff;
-            }
+        /* Button to Open Google Drive */
+        .drive-btn {
+            background-color: #009900;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .drive-btn:hover {
+            background-color: #006600;
         }
     </style>
 </head>
 <body>
 
-<h1>MENTOR Document Viewer</h1>
-
-<!-- Mobile toggle button for small screens -->
-<div class="mobile-toggle" onclick="toggleSidebar()">Show Documents</div>
-
 <div class="container">
-    <!-- Sidebar containing file links -->
-    <div class="sidebar">
-        <h2>Documents List</h2>
-        <ul class="file-list">
-            <li><a href="MENTOR/document1.pdf" target="viewer">Document 1</a></li>
-            <li><a href="MENTOR/document2.pdf" target="viewer">Document 2</a></li>
-            <li><a href="MENTOR/document3.pdf" target="viewer">Document 3</a></li>
-            <!-- Add more document links here -->
-        </ul>
+    <h1>MENTOR Document Viewer</h1>
+
+    <!-- Main Document Viewer -->
+    <div class="document-viewer">
+        <!-- Sidebar with Google Drive Links -->
+        <div class="sidebar">
+            <h2>Document List</h2>
+            <ul class="file-list">
+                <li><a href="https://drive.google.com/file/d/1wPdocID12345/view?usp=sharing" target="viewer">Document 1</a></li>
+                <li><a href="https://drive.google.com/file/d/1wPdocID12346/view?usp=sharing" target="viewer">Document 2</a></li>
+                <li><a href="https://drive.google.com/file/d/1wPdocID12347/view?usp=sharing" target="viewer">Document 3</a></li>
+                <!-- Add more document links here -->
+            </ul>
+        </div>
+
+        <!-- Iframe for displaying documents -->
+        <div class="viewer">
+            <iframe name="viewer" src="https://drive.google.com/file/d/1wPdocID12345/view?usp=sharing"></iframe>
+        </div>
     </div>
 
-    <!-- Viewer for displaying selected documents -->
-    <div class="viewer">
-        <iframe name="viewer" src="MENTOR/document1.pdf"></iframe>
-    </div>
+    <!-- Button to open full Google Drive folder -->
+    <button class="drive-btn" onclick="window.open('https://drive.google.com/drive/folders/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb', '_blank')">Open Full Google Drive Folder</button>
 </div>
-
-<script>
-    function toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        if (sidebar.style.display === 'block') {
-            sidebar.style.display = 'none';
-        } else {
-            sidebar.style.display = 'block';
-        }
-    }
-</script>
 
 </body>
 </html>
