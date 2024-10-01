@@ -1,0 +1,12 @@
+1. Vertel welk soort plastic het was dat jullie hebben gebruikt (bvb. polystyreen, ...).
+Je kan dit normaal terug vinden op basis van de karakterstieke pieken in het
+FTIR spectrum. Langs de andere kant is er normaal gezegd wat één van de belangrijkste 
+eigenschappen van het plastic is dat jullie hebben gebruikt dus het zou niet zo 
+moeilijk moeten zijn om de soort terug te vinden. Dan kun je de FTIR spectra gebruiken 
+als validatie.
+--> plastiek van de zogezegde afbreekbare verpakking uit cafetaria
+
+2. Geef aan of er verschil is tussen de verschillende stalen en of er effectief iets 
+met het plastic is gebeurd in die bodem.
+--> niets gebeurd in bodem
+--> wel in bacteriecultuur

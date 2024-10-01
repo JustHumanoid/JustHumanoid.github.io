@@ -1,0 +1,9 @@
+Nov_concentratie	Mortaliteit	Totaal
+	10	30	30
+	7	20	20
+	5	29	30
+	3	18	20
+	1	14	30
+	0.5	8	10
+	0.1	9	10
+	0	2	20

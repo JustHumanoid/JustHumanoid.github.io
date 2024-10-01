@@ -1,0 +1,35 @@
+rm(list=ls())
+Cd<-read.csv(file="Cdtot.txt",header=T,sep="")
+Cd
+cd.m1<-drm(Mortaliteit/totaal~cd_concentratie,weights=totaal,type="binomial",fct=LL.2(),data=Cd)
+summary(cd.m1)
+rm(list=ls())
+Cd<-read.csv(file="Cdtot.txt",header=T,sep="")
+Cd
+cd.m1<-drm(Mortaliteit/totaal~cd_concentratie,weights=totaal,type="binomial",fct=LL.2(),data=Cd)
+summary(cd.m1)
+local({pkg <- select.list(sort(.packages(all.available = TRUE)),graphics=TRUE)
+if(nchar(pkg)) library(pkg, character.only=TRUE)})
+rm(list=ls())
+Cd<-read.csv(file="Cdtot.txt",header=T,sep="")
+Cd
+cd.m1<-drm(Mortaliteit/totaal~cd_concentratie,weights=totaal,type="binomial",fct=LL.2(),data=Cd)
+summary(cd.m1)
+Mortaliteit
+Nov<-read.csv(file="Novtot.txt",header=T,sep="")
+Nov
+nov.m1<-drm(Mortaliteit/Totaal~Nov_concentratie,weights=Totaal,type="binomial",fct=LL.2(),data=Nov)
+summary(nov.m1)
+utils:::menuInstallPkgs()
+library(drc)
+rm(list=ls())
+Cd<-read.csv(file="Cdtot.txt",header=T,sep="")
+Cd
+cd.m1<-drm(Mortaliteit/totaal~cd_concentratie,weights=totaal,type="binomial",fct=LL.2(),data=Cd)
+summary(cd.m1)
+cd.m1<-drm(Mortaliteit/totaal~cd_concentratie,weights=totaal,type="binomial",fct=LL.2(),data=Cd)
+Nov<-read.csv(file="Novtot.txt",header=T,sep="")
+Nov
+nov.m1<-drm(Mortaliteit/Totaal~Nov_concentratie,weights=Totaal,type="binomial",fct=LL.2(),data=Nov)
+summary(nov.m1)
+plot(nov.m1,pch=20,xlab=novosol~"concentration (mg/L)",ylab="Mortality as fraction of total #",cex=0.5)
