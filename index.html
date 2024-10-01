@@ -3,106 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MENTOR Document Viewer</title>
+    <title>GreenPig - Free Educational Resources</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="g4.svg">
 
     <style>
-        body {
+        /* General Reset */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Arial', sans-serif;
-            background-color: #002200; /* Dark Green */
-            color: white;
+            background-color: #f9f9f9; /* Light background */
+            color: #333;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            align-items: center;
+            height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
-            text-align: center;
-            padding: 20px;
-            background-color: #004400;
+            max-width: 1000px;
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* White box */
+            text-align: center;
         }
 
         h1 {
             font-size: 48px;
-            color: #ffcc00; /* Yellow */
+            color: #28a745; /* Green color */
             margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
         p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .button-container {
-            margin: 40px 0;
-        }
-
-        .drive-btn {
-            background-color: #ffcc00;
-            color: #003300;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 10px;
             font-size: 20px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Big Button Style */
+        .drive-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 8px;
+            font-size: 22px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .drive-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: #218838;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* News Section */
-        .news {
-            background-color: #003300;
+        /* Optional additional section (educational quote or mission) */
+        .quote-section {
+            margin-top: 50px;
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .news h2 {
-            font-size: 32px;
-            color: #ffcc00;
-            margin-bottom: 20px;
-        }
-
-        .news-item {
             font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .iframe-container {
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
+            background-color: #f0f0f0;
             border-radius: 10px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            color: #555;
         }
 
+        /* Media Queries */
         @media (max-width: 768px) {
             h1 {
                 font-size: 36px;
             }
 
-            .drive-btn {
+            p {
                 font-size: 18px;
-                padding: 12px 30px;
+            }
+
+            .drive-btn {
+                font-size: 20px;
+                padding: 15px 30px;
             }
         }
 
@@ -116,7 +104,7 @@
             }
 
             .drive-btn {
-                font-size: 16px;
+                font-size: 18px;
                 padding: 10px 25px;
             }
         }
@@ -125,31 +113,19 @@
 <body>
 
     <div class="container">
-        <h1>MENTOR Document Viewer</h1>
-        <p>Welcome to the Mentor Document Viewer. We are dedicated to providing students with free, accessible educational materials to help them succeed. Our goal is to keep students informed and empowered with up-to-date resources.</p>
+        <h1>Welcome to GreenPig</h1>
+        <p>GreenPig is here to empower students by providing free, accessible educational resources. 
+        Stay informed, stay engaged, and keep learning with the help of GreenPig.</p>
 
-        <!-- Pop Button -->
-        <div class="button-container">
-            <a href="https://drive.google.com/drive/folders/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb" target="_blank" class="drive-btn">
-                Access Free Educational Materials
-            </a>
+        <!-- Big button sending to Google Drive -->
+        <a href="https://drive.google.com/drive/folders/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb" target="_blank" class="drive-btn">
+            Access Free Educational Materials
+        </a>
+        
+        <!-- Educational quote or mission section -->
+        <div class="quote-section">
+            "The best way to predict your future is to create it." – Abraham Lincoln
         </div>
-
-        <!-- News Section -->
-        <div class="news">
-            <h2>Latest Education News</h2>
-            <div class="news-item">
-                <strong>Breaking News:</strong> Global education systems are shifting towards more accessible digital resources for students worldwide, ensuring free learning for all.
-            </div>
-            <div class="news-item">
-                <strong>Update:</strong> UNESCO pushes for open access to research papers and learning materials for underprivileged students.
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional iFrame for embedding the Google Drive folder -->
-    <div class="iframe-container">
-        <iframe src="https://drive.google.com/embeddedfolderview?id=1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb#grid"></iframe>
     </div>
 
 </body>
