@@ -33,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        /* Container Styling */
+        /* Container Styling with bounce effect */
         .container {
             max-width: 800px;
             padding: 40px;
@@ -41,26 +41,24 @@
             box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
             background-color: #1d1d1d; /* Slightly lighter black tone for the container */
             text-align: center;
-            animation: fadeIn 2s ease-in;
+            animation: bounceIn 1.2s ease-in-out; /* Smooth bounce */
         }
 
-        /* Heading with fade-in */
+        /* Heading */
         h1 {
             font-size: 48px;
             color: #28a745; /* Bright green */
             margin-bottom: 20px;
             letter-spacing: 2px;
             font-weight: 600;
-            animation: fadeIn 2s ease-in;
         }
 
-        /* Paragraph with fade-in */
+        /* Paragraph */
         p {
             font-size: 20px;
             color: #ddd; /* Light gray text for readability */
             margin-bottom: 40px;
             line-height: 1.7;
-            animation: fadeIn 2s ease-in;
         }
 
         /* Button Wrapper */
@@ -70,7 +68,6 @@
             gap: 20px;
             margin-bottom: 40px;
             flex-wrap: wrap; /* Ensures buttons wrap in mobile */
-            animation: fadeIn 2s ease-in;
         }
 
         /* Big Button Style */
@@ -109,7 +106,7 @@
             background-color: #e68a00;
         }
 
-        /* Quote section with fade-in */
+        /* Quote section */
         .quote-section {
             margin-top: 30px;
             padding: 20px;
@@ -118,16 +115,20 @@
             border-radius: 10px;
             color: #ccc; /* Slightly lighter text */
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 2s ease-in;
         }
 
-        /* Keyframe Animations */
-        @keyframes fadeIn {
+        /* Keyframe Animation for Bounce */
+        @keyframes bounceIn {
             0% {
+                transform: scale(0.7);
                 opacity: 0;
             }
-            100% {
+            60% {
+                transform: scale(1.1);
                 opacity: 1;
+            }
+            100% {
+                transform: scale(1);
             }
         }
 
