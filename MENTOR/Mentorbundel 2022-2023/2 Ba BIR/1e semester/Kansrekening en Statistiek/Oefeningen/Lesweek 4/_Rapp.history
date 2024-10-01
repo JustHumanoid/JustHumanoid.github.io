@@ -1,9 +1,0 @@
-W<-matrix(data=NA,nrow=8,ncol=8)
-W
-PVgev<-NULL
-PVgev
-dbninom(1,7,1/7)
-dbinom(1,7,1/7)
-1-pbinom(1,7,1/7)
-pbinom(2,7,2/7)
-1-pbinom(2,7,1/7)
