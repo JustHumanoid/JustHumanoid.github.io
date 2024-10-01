@@ -13,7 +13,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
@@ -22,8 +22,12 @@
         h1 {
             color: #ffcc00; /* Geel */
             margin-bottom: 30px;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
+        /* Icons en knop stijlen */
         .drive-btn {
             background-color: #009900;
             color: white;
@@ -32,17 +36,22 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 18px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            margin-top: 20px;
         }
 
         .drive-btn:hover {
             background-color: #006600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .iframe-container {
             margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         iframe {
@@ -51,6 +60,40 @@
             border: none;
         }
 
+        /* Styling voor document icons */
+        .document-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .document-item {
+            background-color: #ffcc00;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .document-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .document-item img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .document-item h3 {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #003300;
+        }
     </style>
 </head>
 <body>
@@ -58,17 +101,39 @@
 <div class="container">
     <h1>MENTOR Document Viewer</h1>
 
+    <!-- Lijst van documenten met icons -->
+    <div class="document-list">
+        <div class="document-item" onclick="loadDocument('https://drive.google.com/file/d/1_documentID_1/preview')">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="Document Icon">
+            <h3>Document 1</h3>
+        </div>
+        <div class="document-item" onclick="loadDocument('https://drive.google.com/file/d/1_documentID_2/preview')">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="Document Icon">
+            <h3>Document 2</h3>
+        </div>
+        <div class="document-item" onclick="loadDocument('https://drive.google.com/file/d/1_documentID_3/preview')">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="Document Icon">
+            <h3>Document 3</h3>
+        </div>
+    </div>
+
     <!-- Knop om de volledige Google Drive map te openen -->
     <a href="https://drive.google.com/drive/folders/1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb?usp=sharing" target="_blank" class="drive-btn">
         Open Full Google Drive Folder
     </a>
 
+    <!-- Ingebouwde iframe -->
     <div class="iframe-container">
-        <!-- Embed Google Drive folder -->
-        <iframe src="https://drive.google.com/embeddedfolderview?id=1lzPrD-nRzwxZTFjxeih7yIOFpBJuZSQb#grid"></iframe>
+        <iframe id="documentViewer" src=""></iframe>
     </div>
-
 </div>
+
+<script>
+    // Functie om documenten te laden in iframe
+    function loadDocument(url) {
+        document.getElementById('documentViewer').src = url;
+    }
+</script>
 
 </body>
 </html>
